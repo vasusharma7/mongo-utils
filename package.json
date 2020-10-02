@@ -60,5 +60,8 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "npm run format && npm run lint && npm run build"
     }
+  },
+  "dependencies": {
+    "mongodb": "^3.6.2"
   }
 }
