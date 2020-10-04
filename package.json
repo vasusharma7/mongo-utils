@@ -10,6 +10,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "watch": "tsc --watch",
+    "start": "nodemon index.js",
     "build": "npm run compile",
     "compile": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -31,7 +33,8 @@
       "name": "Pranav Joglekar"
     },
     {
-      "name": "Vasu Sharma"
+      "name": "Vasu Sharma",
+      "email": "vasusharma2017@outlook.com"
     }
   ],
   "repository": {
@@ -45,6 +48,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/node": "^14.11.2",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "eslint": "^7.10.0",
@@ -62,6 +66,14 @@
     }
   },
   "dependencies": {
+    "@types/mongodb": "^3.5.27",
+    "blob": "^0.1.0",
+    "excel4node": "^1.7.2",
+    "export-from-json": "^1.3.4",
+    "js2excel": "^1.0.1",
+    "json-2-csv": "^3.7.7",
+    "json-as-xlsx": "^1.1.5",
+    "json2xls": "^0.1.2",
     "mongodb": "^3.6.2"
   }
 }
