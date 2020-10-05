@@ -68,12 +68,8 @@
   "dependencies": {
     "@types/mongodb": "^3.5.27",
     "blob": "^0.1.0",
-    "excel4node": "^1.7.2",
-    "export-from-json": "^1.3.4",
-    "js2excel": "^1.0.1",
     "json-2-csv": "^3.7.7",
     "json-as-xlsx": "^1.1.5",
-    "json2xls": "^0.1.2",
     "mongodb": "^3.6.2"
   }
 }
