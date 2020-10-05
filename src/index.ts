@@ -2,17 +2,13 @@ import process = require("process");
 import fs = require("fs");
 import { MongoClient } from "mongodb";
 import csvConvertor = require("json-2-csv");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const xlsxConvertor = require("json-as-xlsx");
-// const { json2excel } = require("js2excel");
-// import js2excel = require("js2excel");
 interface downloadI {
   mongoURI: string;
   database: string;
   type: string;
 }
-
-// const mongoURI: string =
-//     "mongodb+srv://rootUser:sds2020root@sss-x10cv.mongodb.net/Construction?retryWrites=true&w=majority";
 
 const preprocessRecords = (
   records: Array<Record<string, any>>,
@@ -40,8 +36,7 @@ async function downloadDatabase(params: downloadI): Promise<void> {
   // const username: null | string = null;
   // const password: null | string = null;
   const client = new MongoClient(mongoURI, { useUnifiedTopology: true });
-  //if !client
-  // db.admin().listDatabases((err: any, res: any) => console.log(res.databases))
+
   try {
     console.log("Connecting.......");
     await client.connect();
@@ -106,9 +101,9 @@ async function downloadDatabase(params: downloadI): Promise<void> {
 }
 // const mongoURI: string =
 //   "mongodb+srv://rootUser:sds2020root@sss-x10cv.mongodb.net/Construction?retryWrites=true&w=majority";
-const mongoURI = "mongodb://localhost:27017"
-const database = "Construction"
-const type = "csv"
+const mongoURI = "mongodb://localhost:27017";
+const database = "Construction";
+const type = "csv";
 downloadDatabase({
   mongoURI,
   database,
