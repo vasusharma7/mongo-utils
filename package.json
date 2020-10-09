@@ -11,7 +11,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run compile",
-    "start": "nodemon index.js",
+    "start": "node lib/index.js",
+    "test": "node lib/test.js",
     "compile": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
