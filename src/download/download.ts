@@ -2,7 +2,7 @@ import process = require("process");
 import fs = require("fs");
 import { MongoClient } from "mongodb";
 import csvConvertor = require("json-2-csv");
-
+import utils from "./utils";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const xlsxConvertor = require("json-as-xlsx");
 
@@ -17,24 +17,6 @@ interface downloadI {
   type: string;
 }
 
-const preprocessRecords = (records: documents): documents => {
-  if (records.length === 0) return [];
-  const modifiedRecords: documents = [];
-  const keys: Array<string> = Object.keys(records[0]).filter(
-    (key: string): boolean => typeof records[0][key] === "object",
-  );
-  records.forEach((record: document) => {
-    keys.forEach((key: string): void => {
-      try {
-        record[key] = JSON.stringify(record[key]);
-      } catch (err) {
-        console.log(err.message);
-      }
-    });
-    modifiedRecords.push(record);
-  });
-  return modifiedRecords;
-};
 export default async function downloadDatabase(
   params: downloadI,
 ): Promise<void> {
@@ -84,7 +66,7 @@ export default async function downloadDatabase(
       async (obj: any): Promise<void> => {
         const collection: any = db.collection(obj.name);
         let records: documents = await collection.find({}).toArray();
-        records = preprocessRecords(records);
+        records = utils.preprocessRecords(records);
 
         if (!fs.existsSync(dbDir)) {
           fs.mkdirSync(dbDir);
