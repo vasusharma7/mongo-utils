@@ -130,7 +130,9 @@ export default async function downloadDatabase(
               );
               fs.writeFileSync(file, JSON.stringify(records));
               // console.log(`${obj.name}.json Saved Successfully`);
-              fs.close(file, () => {});
+              fs.close(file, () => {
+                //
+              });
             } catch (err) {
               console.error("export error", err);
             }
