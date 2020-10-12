@@ -1,17 +1,26 @@
+import { ObjectID as objId } from "mongodb";
+
 interface document {
-  [key: string]: string | number | boolean | null | document | Array<document>;
+  [key: string]:
+    | objId
+    | string
+    | number
+    | boolean
+    | null
+    | document
+    | Array<document>;
 }
 type documents = Array<document>;
 
-const preprocessRecords = (records: documents): documents => {
+export const preprocessRecords = (records: documents): documents => {
   if (records.length === 0) return [];
   const modifiedRecords: documents = [];
 
-  records.forEach((record: any) => {
+  records.forEach((record: document) => {
     delete record["__v"];
     Object.keys(record).forEach((key: string): void => {
       if (key == "_id") {
-        record["_id"] = record["_id"].toString();
+        record["_id"] = (record["_id"] as objId).toString();
         return;
       }
       if (typeof record[key] === "object")
@@ -26,5 +35,3 @@ const preprocessRecords = (records: documents): documents => {
   });
   return modifiedRecords;
 };
-
-export default { preprocessRecords };

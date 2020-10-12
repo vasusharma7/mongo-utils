@@ -71,108 +71,101 @@ export default async function downloadDatabase(
       console.log(`No Collections found in database ${database}`);
       return;
     }
-    let savePath: string;
+    const dbDir = `${process.cwd()}/${database}_${params.type}`;
     if (type === "excel" || type === "csv") {
-      savePath = `${process.cwd()}/${database}_${params.type}`;
-      if (!fs.existsSync(savePath)) {
-        fs.mkdirSync(savePath);
+      if (!fs.existsSync(dbDir)) {
+        fs.mkdirSync(dbDir);
       }
-    } else {
-      savePath = `${process.cwd()}/${database}.json`;
-      fs.openSync(savePath, "w");
     }
     const data: dataDump = {};
     console.log(`Exporting ${collectionsArray.length} collections as ${type}`);
-    collectionsArray.forEach(
-      async (obj): Promise<void> => {
-        const collection: Collection = db.collection(obj.name);
 
+    await collectionsArray.forEach(
+      async (collectionObj): Promise<void> => {
+        const collection: Collection = db.collection(collectionObj.name);
         let records: documents = await collection.find({}).toArray();
         if (type === "excel" || type === "csv") {
           records = utils.preprocessRecords(records);
         }
-        data[obj.name] = records;
-        switch (type) {
-          case "csv":
+        data[collectionObj.name] = records;
+      },
+    );
+    switch (type) {
+      case "csv":
+        Object.keys(data).forEach(
+          async (collectionName: string): Promise<void> => {
+            console.log(collectionName);
             csvConvertor.json2csv(
-              records,
+              data[collectionName],
               (err: Error | undefined, csv: string | undefined): void => {
                 //need to be looked at
                 csv = (csv as string).replace(/undefined/g, "<UNDEFINED>");
 
                 if (err) throw err;
                 fs.writeFile(
-                  `${savePath}/${obj.name}.csv`,
+                  `${dbDir}/${collectionName}.csv`,
                   csv,
                   "utf8",
                   function (error): void {
                     if (error) {
                       console.log(
-                        `${obj.name}.csv Some error occured - file either not saved or corrupted file saved.`,
+                        `${collectionName}.csv Some error occured - file either not saved or corrupted file saved.`,
                       );
                     } else {
-                      // console.log(`${obj.name}.csv Saved Successfully`);
+                      // console.log(`${collectionName}.csv Saved Successfully`);
                     }
                   },
                 );
               },
             );
-            break;
-          case "excel":
-            records = utils.preprocessRecords(records);
+          },
+        );
+        break;
+      case "excel":
+        Object.keys(data).forEach(
+          async (collectionName: string): Promise<void> => {
             try {
-              if (records.length == 0) {
-                console.error(`Collection ${obj.name} is empty`);
-                break;
+              if (data[collectionName].length == 0) {
+                console.error(`Collection ${collectionName} is empty`);
+                return;
               }
               const columns: Array<Record<string, string>> = [];
-              Object.keys(records[0]).map((key: string): void => {
+              Object.keys(data[collectionName][0]).map((key: string): void => {
                 columns.push({ label: key, value: key });
               });
               const xlsxSettings: Record<string, string | number> = {
-                fileName: `${savePath}/${obj.name}`,
+                fileName: `${dbDir}/${collectionName}`,
               };
-              xlsxConvertor(columns, records, xlsxSettings, true);
-              // console.log(`${obj.name}.xlsx Saved Successfully`);
+              xlsxConvertor(columns, data[collectionName], xlsxSettings, true);
+              // console.log(`${collectionName}.xlsx Saved Successfully`);
             } catch (e) {
-              console.error(`export error in ${obj.name}`, e);
+              console.error(`export error in ${collectionName}`, e);
             }
-
-            break;
-          case "json":
-            if (Object.keys(data).length === collectionsArray.length) {
-              (async () => {
-                try {
-                  const file: number = fs.openSync(
-                    `${process.cwd()}/${database}.json`,
-                    "a",
-                  );
-                  fs.writeFileSync(file, JSON.stringify({ ...data }, null, 2));
-                } catch (err) {
-                  console.error("export error", err);
-                }
-              })();
-            }
-
-            break;
-
-          default:
-            console.log(
-              "Invalid Export Format Specified\nSpeifiy one of the three : json | csv | excel ",
-            );
-            return;
+          },
+        );
+        break;
+      case "json":
+        try {
+          const file: number = fs.openSync(`${database}.json`, "w");
+          fs.writeFileSync(file, JSON.stringify(data));
+          // console.log(`${collectionName}.json Saved Successfully`);
+          fs.close(file, () => {
+            //
+          });
+        } catch (err) {
+          console.error("export error", err);
         }
-      },
-    );
-    if (type === "json") {
-      console.log(
-        `Database ${database} exported as ${type} successfully at : ${savePath}`,
-      );
-    } else {
-      console.log(
-        `Database ${database} exported as ${type} successfully at : ${savePath}`,
-      );
+        break;
+
+      default:
+        console.log(
+          "Invalid Export Format Specified\nSpeifiy one of the three : json | csv| excel ",
+        );
+        return;
     }
+    console.log(
+      `Database ${database} exported as ${type} successfully at location : ${dbDir}`,
+    );
   } catch (err) {
     console.log(err);
   }
