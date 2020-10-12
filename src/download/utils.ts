@@ -6,19 +6,25 @@ type documents = Array<document>;
 const preprocessRecords = (records: documents): documents => {
   if (records.length === 0) return [];
   const modifiedRecords: documents = [];
-  const keys: Array<string> = Object.keys(records[0]).filter(
-    (key: string): boolean => typeof records[0][key] === "object",
-  );
-  records.forEach((record: document) => {
-    keys.forEach((key: string): void => {
-      try {
-        record[key] = JSON.stringify(record[key]);
-      } catch (err) {
-        console.log(err.message);
+
+  records.forEach((record: any) => {
+    delete record["__v"];
+    Object.keys(record).forEach((key: string): void => {
+      if (key == "_id") {
+        record["_id"] = record["_id"].toString();
+        return;
       }
+      if (typeof record[key] === "object")
+        try {
+          record[key] = JSON.stringify(record[key]);
+          //to remove undeinfed values
+        } catch (err) {
+          console.log(err.message);
+        }
     });
     modifiedRecords.push(record);
   });
   return modifiedRecords;
 };
+
 export default { preprocessRecords };

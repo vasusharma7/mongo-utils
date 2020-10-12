@@ -28,6 +28,7 @@ export default async function downloadDatabase(
   });
 
   try {
+    console.log("Connecting to Mongo Server......");
     await client.connect();
     await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to Mongo Server");
@@ -66,14 +67,14 @@ export default async function downloadDatabase(
       async (obj: any): Promise<void> => {
         const collection: any = db.collection(obj.name);
         let records: documents = await collection.find({}).toArray();
-        records = utils.preprocessRecords(records);
-
         if (!fs.existsSync(dbDir)) {
           fs.mkdirSync(dbDir);
         }
         switch (type) {
           case "csv":
+            records = utils.preprocessRecords(records);
             csvConvertor.json2csv(records, (err: unknown, csv: any): void => {
+              csv = csv.replace(/undefined/g, "");
               if (err) throw err;
               fs.writeFile(`${dbDir}/${obj.name}.csv`, csv, "utf8", function (
                 err: any,
@@ -89,18 +90,23 @@ export default async function downloadDatabase(
             });
             break;
           case "excel":
+            records = utils.preprocessRecords(records);
             try {
+              if (records.length == 0) {
+                console.error(`Collection ${obj.name} is empty`);
+                break;
+              }
               const columns: Array<Record<string, string>> = [];
               Object.keys(records[0]).map((key: string): void => {
                 columns.push({ label: key, value: key });
               });
               const xlsxSettings: Record<string, string | number> = {
-                fileName: `${dbDir}/${obj.name}.xlsx`,
+                fileName: `${dbDir}/${obj.name}`,
               };
               xlsxConvertor(columns, records, xlsxSettings, true);
               // console.log(`${obj.name}.xlsx Saved Successfully`);
             } catch (e) {
-              console.error("export error", e);
+              console.error(`export error in ${obj.name}`, e);
             }
 
             break;
