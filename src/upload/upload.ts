@@ -1,7 +1,19 @@
-import { MongoClient, Collection, InsertWriteOpResult } from "mongodb";
+import {
+  MongoClient,
+  Collection,
+  InsertWriteOpResult,
+  ObjectId as objId,
+} from "mongodb";
 
 interface document {
-  [key: string]: string | number | boolean | null | document | Array<document>;
+  [key: string]:
+    | objId
+    | string
+    | number
+    | boolean
+    | null
+    | document
+    | Array<document>;
 }
 type documents = Array<document>;
 interface uploadData {
