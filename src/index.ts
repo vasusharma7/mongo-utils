@@ -1,11 +1,12 @@
-import downloadDatabase from "./download/download";
+import transferData from "./transfer/transfer";
 
 const mongoURI = "mongodb://localhost:27017";
-const database = "Construction";
-const type = "excel"; //json | csv | 'excel'
+const databaseFrom = "Construction";
+const databaseTo = "Construction_Copy";
 
-downloadDatabase({
-  mongoURI,
-  database,
-  type,
+transferData({
+  databaseFrom: databaseFrom,
+  databaseTo: databaseTo,
+  transferFrom: mongoURI,
+  transferTo: mongoURI,
 });
