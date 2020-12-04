@@ -7,7 +7,7 @@ const version = "0.0.1";
 
 const parser: ArgumentParser = new ArgumentParser({
   description:
-    "Mongo Utils - Handy CLI utils for managing multiple mongo instances",
+    "Mongo Utils - Handy utilities for managing multiple mongo instances",
 });
 parser.add_argument("-v", "--version", { action: "version", version });
 
@@ -56,7 +56,7 @@ const run = async (): Promise<void> => {
       });
     else {
       console.log(
-        `Please provide mongoURI,database name and export type in arguements\nYou may expore -h option`,
+        `Please provide mongoURI,database name and export type in arguements\nYou may expore -h flag`,
       );
     }
   } else if (args.upload) {
@@ -68,7 +68,7 @@ const run = async (): Promise<void> => {
       });
     else
       console.log(
-        `Please provide mongoURI,database name and JSON file path in arguements\nYou may expore -h option`,
+        `Please provide mongoURI,database name and JSON file path in arguements\nYou may expore -h flag`,
       );
   } else if (args.transfer) {
     if (
@@ -85,8 +85,12 @@ const run = async (): Promise<void> => {
       });
     else
       console.log(
-        `Please provide mongoURIs of both clusters and database names in arguements\nYou may expore -h option`,
+        `Please provide mongoURIs of both clusters and database names in arguements\nYou may expore -h flag`,
       );
+  } else {
+    console.log(
+      `Welcome to Mongo Utils - Handy utilities for managing multiple mongo instances\nYou may expore -h flag`,
+    );
   }
 };
 
