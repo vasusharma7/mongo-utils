@@ -68,6 +68,7 @@
     }
   },
   "dependencies": {
+    "@types/argparse": "^2.0.4",
     "argparse": "^2.0.1",
     "blob": "^0.1.0",
     "json-2-csv": "^3.7.7",
