@@ -2,13 +2,12 @@
 <br />
 
 <h1 align="center">Mongo Utils</h1>
-
-  
-[![NPM Version](https://img.shields.io/npm/v/npm)](https://npmjs.org/)
- [![Minzipped Size](https://flat.badgen.net/bundlephobia/minzip/json-2-csv)](https://bundlephobia.com/result?p=mongo-utils)
-[![Typings](https://img.shields.io/npm/types/typescript)](https://npmjs.org/)
-[![Lisence](https://img.shields.io/npm/l/node)](https://npmjs.org/)
- 
+<p align="center">
+  <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/v/npm"/></a>
+   <a href ="https://bundlephobia.com/result?p=mongo-utils"> <img src = "https://flat.badgen.net/bundlephobia/minzip/mongo-utils"/></a>
+   <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/types/typescript"/></a>
+<a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/l/node"/></a>
+ </p>
 
  
 <p align="center">
@@ -97,7 +96,6 @@ Data to be uploaded should be in json format as -
 To use globally, first make sure you have installed package with -g flag as - 
 
 `npm install -g mongo-utils`
-
 
 
 
