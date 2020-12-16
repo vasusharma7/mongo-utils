@@ -1,6 +1,6 @@
 {
   "name": "mongo-utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Handy CLI utils for managing multiple mongo instances",
   "keywords": [
     "mongoose",
