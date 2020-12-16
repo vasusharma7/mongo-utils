@@ -47,7 +47,7 @@ Import necessary functions from mongo-utils as
 
 `import { transferData, downloadData, uploadToDatabase } from "mongo-utils";`
 
- - downloadData function can be used as - 
+#### downloadData() function can be used as - 
 
 ```
 (async () => {
@@ -58,7 +58,8 @@ Import necessary functions from mongo-utils as
     });
  })();
 ```
-- uploadToDatabase function can be used as - 
+
+#### uploadToDatabase() function can be used as - 
  
 ```
 (async () => {
@@ -66,8 +67,7 @@ Import necessary functions from mongo-utils as
  })();
 ```
 
-Data to be uploaded should be in json format as - 
-  
+#### Data to be uploaded should be in json format as - 
 ```
 {
     "collectionName1":[document11, document12, ....],
@@ -75,8 +75,9 @@ Data to be uploaded should be in json format as -
 }
 
 ```
+*In CLI mode, path of JSON file in above format should be provided to upload.
 
-- transferData function can be used as - 
+#### transferData() function can be used as - 
 
 ```
 (async () => {
@@ -90,6 +91,10 @@ Data to be uploaded should be in json format as -
 ```
 
 
+#### Test files 
+
+Test files for javascript modules can be found [here](https://github.com/vasusharma7/mongo-utils/tree/master/test/)
+
 
 ## Command Line Interface 
 
@@ -97,8 +102,50 @@ To use globally, first make sure you have installed package with -g flag as -
 
 `npm install -g mongo-utils`
 
+Running `mongo-utils -h` displays all the options - 
 
+```
+$ mongo-utils -h
 
+usage: mongo-utils [-h] [-v] [-d DOWNLOAD] [-u UPLOAD] [-t TRANSFER] [-n DATABASE2] [-x MONGOURI] [-p PATH] [-y MONGOURI2] [-e {json,excel,csv}]
+
+Mongo Utils - Handy utilities for managing multiple mongo instances.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -d DOWNLOAD, --download DOWNLOAD
+                        Name of Database to Download data from instance
+  -u UPLOAD, --upload UPLOAD
+                        Name of Database to Upload data to instance
+  -t TRANSFER, --transfer TRANSFER
+                        Name of Database to Transfer Data FROM
+  -n DATABASE2, --database2 DATABASE2
+                        Name of the database to transfer data TO - use with -t flag
+  -x MONGOURI, --mongoURI MONGOURI
+                        Mongo URI for the database - to download from/ upload to/ transfer from
+  -p PATH, --path PATH  Path of JSON file to upload data in proper format - use only with upload(-u)
+  -y MONGOURI2, --mongoURI2 MONGOURI2
+                        MongoURI of the database you want to transfer data to - use only with transfer(-t)
+  -e {json,excel,csv}, --type {json,excel,csv}
+                        Export as json/csv/excel
+
+```
+##### CLI Examples - 
+
+```
+#download data
+$ mongo-utils -d test-database -e json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+
+#upload data
+$ mongo-utils -u test-database -p ./test-database.json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+
+#transfer data
+$ mongo-utils -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htccg321@cluster0-miow4.mongodb.net/test" -y "mongodb://localhost:27017"
+
+```
+
+*The mongoDB connection strings should be enclosed within quotes - ""
 
 
 
@@ -107,11 +154,6 @@ To use globally, first make sure you have installed package with -g flag as -
  - [Pranav Joglekar](https://github.com/Pranav2612000/)
  - [Vasu Sharma](https://github.com/vasusharma7/)
  - [Yash Shah](https://github.com/yashshah1/)
-
-
-
-
-
 
 
 
