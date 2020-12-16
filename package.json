@@ -1,16 +1,16 @@
 {
-  "name": "mongo-utils",
+  "name": "mongoutils",
   "version": "1.0.0",
   "description": "Handy CLI utils for managing multiple mongo instances",
   "keywords": [
-    "mongoose",
+    "mongodb",
     "utils"
   ],
   "homepage": "https://github.com/vasusharma7/mongo-utils#readme",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "mongo-utils": "lib/index.js"
+    "mongoutils": "lib/index.js"
   },
   "scripts": {
     "watch": "tsc --watch",
