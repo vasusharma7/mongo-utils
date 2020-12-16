@@ -27,19 +27,15 @@
   "files": [
     "lib/**/*"
   ],
-  "author": "Yash Shah <yashah1234@gmail.com>",
+  "author": "Vasu Sharma <vasusharma656@gmail.com>",
   "contributors": [
     {
-      "name": "Yash Shah",
-      "email": "yashah1234@gmail.com"
-    },
-    {
       "name": "Pranav Joglekar",
-      "email":"pranav26joglekar@gmail.com"
+      "email": "pranav26joglekar@gmail.com"
     },
     {
       "name": "Vasu Sharma",
-      "email": "vasusharma2017@outlook.com"
+      "email": "vasusharma656@gmail.com"
     }
   ],
   "repository": {
