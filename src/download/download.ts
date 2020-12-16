@@ -31,7 +31,9 @@ interface downloadI {
   type: "json" | "csv" | "excel";
   // save?: boolean;
 }
-
+/**
+ * @param {downloadI}
+ */
 export default async function downloadDatabase(
   params: downloadI,
 ): Promise<null | uploadData> {
@@ -46,7 +48,7 @@ export default async function downloadDatabase(
       console.log("Connecting to Mongo Server......");
       await client.connect();
       await client.db("admin").command({ ping: 1 });
-      console.log("Connected successfully to Mongo Server");
+      console.log("Connected successfully to Mongo Server !");
 
       const db: Db = await client.db(database);
       const adminDb = client.db().admin();

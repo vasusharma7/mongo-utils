@@ -22,6 +22,9 @@ type documents = Array<document>;
 interface uploadData {
   [key: string]: documents;
 }
+/**
+ * @param {transferConfig}
+ */
 const transferData = async (params: transferConfig): Promise<void> => {
   const { transferFrom, databaseFrom, transferTo, databaseTo } = params;
   const downloaded: null | uploadData = await downloadDatabase({

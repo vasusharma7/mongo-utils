@@ -1,8 +1,8 @@
+#!/usr/bin/env node
 import { ArgumentParser } from "argparse";
 import transferData from "./transfer/transfer";
-import uploadData from "./upload/upload";
+import uploadToDatabase from "./upload/upload";
 import downloadData from "./download/download";
-
 import fs = require("fs");
 import process = require("process");
 
@@ -50,62 +50,58 @@ parser.add_argument("-e", "--type", {
   choices: ["json", "excel", "csv"],
 });
 
-(async (): Promise<void> => {
-  const args = parser.parse_args();
-  if (args.download) {
-    if (args.mongoURI && args.download && args.type) {
-      await downloadData({
-        mongoURI: args.mongoURI,
-        database: args.download,
-        type: args.type,
-      });
-      process.exit(1);
-    } else {
-      console.log(
-        `Please provide mongoURI, database name and export type in arguements\nYou may expore -h flag`,
-      );
-    }
-  } else if (args.upload) {
-    if (args.upload && args.mongoURI && args.path) {
-      try {
-        const data = JSON.parse(fs.readFileSync(args.path).toString());
-        await uploadData({
-          dbName: args.upload,
+if (require.main === module) {
+  (async (): Promise<void> => {
+    const args = parser.parse_args();
+    if (args.download) {
+      if (args.mongoURI && args.download && args.type) {
+        await downloadData({
           mongoURI: args.mongoURI,
-          data: data,
+          database: args.download,
+          type: args.type,
         });
         process.exit(1);
-      } catch (err) {
-        console.log(err.message);
+      } else {
+        console.log(
+          `Please provide mongoURI, database name and export type in arguements\nYou may expore -h flag`,
+        );
       }
-    } else
-      console.log(
-        `Please provide mongoURI,database name and JSON file path in arguements\nYou may expore -h flag`,
-      );
-  } else if (args.transfer) {
-    if (args.mongoURI && args.transfer && args.mongoURI2 && args.database2) {
-      await transferData({
-        transferFrom: args.mongoURI,
-        databaseFrom: args.transfer,
-        transferTo: args.mongoURI2,
-        databaseTo: args.database2,
-      });
-      process.exit(1);
+    } else if (args.upload) {
+      if (args.upload && args.mongoURI && args.path) {
+        try {
+          const data = JSON.parse(fs.readFileSync(args.path).toString());
+          await uploadToDatabase({
+            dbName: args.upload,
+            mongoURI: args.mongoURI,
+            data: data,
+          });
+          process.exit(1);
+        } catch (err) {
+          console.log(err.message);
+        }
+      } else
+        console.log(
+          `Please provide mongoURI,database name and JSON file path in arguements\nYou may expore -h flag`,
+        );
+    } else if (args.transfer) {
+      if (args.mongoURI && args.transfer && args.mongoURI2 && args.database2) {
+        await transferData({
+          transferFrom: args.mongoURI,
+          databaseFrom: args.transfer,
+          transferTo: args.mongoURI2,
+          databaseTo: args.database2,
+        });
+        process.exit(1);
+      } else {
+        console.log(
+          `Please provide mongoURIs of both clusters and database names in arguements\nYou may expore -h flag`,
+        );
+      }
     } else {
       console.log(
-        `Please provide mongoURIs of both clusters and database names in arguements\nYou may expore -h flag`,
+        `Welcome to Mongo Utils - Handy utilities for managing multiple mongo instances\nYou may expore -h flag`,
       );
     }
-  } else {
-    console.log(
-      `Welcome to Mongo Utils - Handy utilities for managing multiple mongo instances\nYou may expore -h flag`,
-    );
-  }
-})();
-
-exports.printMsg = function () {
-  console.log(
-    "Mongo Utils - Handy utilities for managing multiple mongo instances.",
-  );
-};
-export { transferData, uploadData, downloadData };
+  })();
+}
+export { transferData, uploadToDatabase, downloadData };

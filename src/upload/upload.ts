@@ -24,7 +24,9 @@ interface uploadConfig {
   mongoURI: string;
   data: uploadData;
 }
-
+/**
+ * @param {uploadConfig}
+ */
 async function uploadToDatabase(params: uploadConfig): Promise<void> {
   const { dbName, mongoURI, data } = params;
   const client: MongoClient = new MongoClient(mongoURI, {
@@ -32,9 +34,9 @@ async function uploadToDatabase(params: uploadConfig): Promise<void> {
   });
 
   try {
-    console.log("Connecting....");
+    console.log("Connecting to Mongo Server....");
     await client.connect();
-    console.log("Connected !");
+    console.log("Connected successfully to Mongo Server !");
     const db = client.db(dbName);
     const promises: Promise<InsertWriteOpResult<any>>[] = [];
     Object.keys(data).forEach(

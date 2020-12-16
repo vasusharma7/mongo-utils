@@ -9,6 +9,9 @@
   "homepage": "https://github.com/yashshah1/mongo-utils#readme",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "bin": {
+    "mongo-utils": "lib/index.js"
+  },
   "scripts": {
     "watch": "tsc --watch",
     "start": "nodemon index.js",
