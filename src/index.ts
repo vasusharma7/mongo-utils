@@ -10,7 +10,8 @@ const version = "0.0.1";
 
 const parser: ArgumentParser = new ArgumentParser({
   description:
-    "Mongo Utils - Handy utilities for managing multiple mongo instances.",
+    "Mongo Utils - Handy utilities for managing multiple mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils",
+  epilog: 'Note: Enclose MongoDB connection strings within quotes "" ',
 });
 
 parser.add_argument("-v", "--version", { action: "version", version });
@@ -33,7 +34,7 @@ parser.add_argument("-n", "--database2", {
 
 parser.add_argument("-x", "--mongoURI", {
   help:
-    "Mongo URI for the database - to download from/ upload to/ transfer from",
+    "MongoDB connection string of the instance - to download from/ upload to/ transfer from",
 });
 
 parser.add_argument("-p", "--path", {
@@ -42,7 +43,7 @@ parser.add_argument("-p", "--path", {
 });
 parser.add_argument("-y", "--mongoURI2", {
   help:
-    "MongoURI of the database you want to transfer data to - use only with transfer(-t)",
+    "MongoDB connection string of the instance you want to transfer data to - use only with transfer(-t)",
 });
 
 parser.add_argument("-e", "--type", {
