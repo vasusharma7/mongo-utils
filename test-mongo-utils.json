@@ -1,0 +1,36 @@
+{
+  "collection1": [
+    {
+      "_id": "5fd9bb77743ad74d49be6471",
+      "title": "doc1",
+      "field1": "val1"
+    },
+    {
+      "_id": "5fd9bdd035988c5279194cbe",
+      "title": "doc1",
+      "field1": "val1"
+    }
+  ],
+  "collection2": [
+    {
+      "_id": "5fd9bb77743ad74d49be6472",
+      "title": "doc2",
+      "field1": "val2"
+    },
+    {
+      "_id": "5fd9bb77743ad74d49be6473",
+      "title": "doc3",
+      "field1": "val3"
+    },
+    {
+      "_id": "5fd9bdd035988c5279194cbf",
+      "title": "doc2",
+      "field1": "val2"
+    },
+    {
+      "_id": "5fd9bdd035988c5279194cc0",
+      "title": "doc3",
+      "field1": "val3"
+    }
+  ]
+}
