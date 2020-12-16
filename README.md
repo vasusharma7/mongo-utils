@@ -61,7 +61,9 @@ Import necessary functions from mongo-utils as
 Parameters - 
 
 * mongoURI - Mongo DB connection string of the instance from which you want to download data.
-            Example - "mongodb://localhost:27017"
+
+           ` Example - mongodb://localhost:27017 `
+            
 * database - Name of the database to download from MongoDB instance.
 * type  - Type describes the way you want the data to get stored. This can be json or csv or excel.
 
@@ -77,7 +79,9 @@ Parameters -
 
 * dbName - Name of the database to upload data to (If this doesn't already exist, new database will be created)
 * mongoURI - Mongo DB connection string of the instance to which you want to upload data TO.
-             Example - "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+
+             ` Example - mongodb+srv://user:password@cluster0-miow4.mongodb.net/test `
+             
 * data - Data should be in JSON format with keys as collection names and values as array of documents to upload. Illustration given below - 
 
 #### Data to be uploaded should be in json format as - 
