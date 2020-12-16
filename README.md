@@ -116,7 +116,7 @@ Parameters -
 
 #### Test files 
 
-Test files for javascript modules can be found [here](https://github.com/vasusharma7/mongo-utils/tree/master/test/)
+Test files for javascript modules can be found [here](https://github.com/vasusharma7/mongo-utils/tree/test/test/)
 
 
 ## Command Line Interface 
