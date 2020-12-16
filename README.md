@@ -58,6 +58,12 @@ Import necessary functions from mongo-utils as
     });
  })();
 ```
+Parameters - 
+
+* mongoURI - Mongo DB connection string of the instance from which you want to download data.
+* database - Name of the database to download from MongoDB instance.
+* type  - Type describes the way you want the data to get stored. This can be json or csv or excel.
+
 
 #### uploadToDatabase() function can be used as - 
  
@@ -66,6 +72,12 @@ Import necessary functions from mongo-utils as
   await uploadToDatabase({ dbName: <database_name>, mongoURI: <mongoDB_connection_string>, data: <data-to-upload> });
  })();
 ```
+Parameters - 
+
+* dbName - Name of the database to upload data to (If this doesn't already exist, new database will be created)
+* mongoURI - Mongo DB connection string of the instance to which you want to upload data TO.
+             Example - "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+* data - Data should be in JSON format with keys as collection names and values as array of documents to upload. Illustration given below - 
 
 #### Data to be uploaded should be in json format as - 
 ```
@@ -89,6 +101,12 @@ Import necessary functions from mongo-utils as
     });
  })();
 ```
+Parameters - 
+
+* transferFrom - Mongo DB connection string of the instance from which you want to transfer data FROM.
+* databaseFrom - Name of the database from which to transfer data.
+* transferTo -  Mongo DB connection string of the instance to which you want to transfer data TO.
+* databaseTo - Name of the database to transfer data to -(If this doesn't already exist, new database will be created)
 
 
 #### Test files 
@@ -98,7 +116,7 @@ Test files for javascript modules can be found [here](https://github.com/vasusha
 
 ## Command Line Interface 
 
-To use globally, first make sure you have installed package with -g flag as - 
+To use globally from command line, first make sure you have installed package with -g flag as - 
 
 `npm install -g mongo-utils`
 
@@ -145,7 +163,7 @@ $ mongo-utils -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htcc
 
 ```
 
-*The mongoDB connection strings should be enclosed within quotes - ""
+#### Note: In CLI mode, the mongoDB connection strings should be enclosed within quotes - ""
 
 
 
