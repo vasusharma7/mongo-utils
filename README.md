@@ -1,7 +1,7 @@
 
 <br />
 
-<h1 align="center">Mongo Utils</h1>
+<h1 align="center">Mongo-Utils</h1>
 <p align="center">
   <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/v/npm"/></a>
    <a href ="https://bundlephobia.com/result?p=mongo-utils"> <img src = "https://flat.badgen.net/bundlephobia/minzip/mongo-utils"/></a>
@@ -11,19 +11,20 @@
 
  
 <p align="center">
-    <a href="https://github.com/vasusharma7/mongo-utils/issues">Report Bug</a> &nbsp &nbsp
-    <a href="https://github.com/vasusharma7/mongo-utils/issues">Request Feature</a>
+    <a href="https://github.com/vasusharma7/mongo-utils/issues">Report a Bug</a> &nbsp &nbsp
+    <a href="https://github.com/vasusharma7/mongo-utils/issues">Request a Feature</a>
  </center>
  
-Mongo Utils are handy utilities for managing multiple mongo instances. Available as a module as well as in CLI mode, you can
+Mongo Utils is a group of handy utilities for managing mongoDB instances. It can be used to : 
+- Download MongoDB Databases in json/csv/excel formats.
+- Upload Data in json format to MongoDB databases.
+- Transfer data from one MongoDB database to another.
 
-- Download MongoDB Databases in json/csv/excel format.
-- Upload Data to MongoDB instances.
-- Transfer data from one MongoDB instance to another
+Available as a module as well as in CLI mode, 
 
 ## How to install
 
-You can install json2csv as a dependency using NPM.  
+You can install mongo-utils as a dependency using NPM.  
 
 ```sh
 # Global so it can be called from anywhere
@@ -33,15 +34,15 @@ $ npm install mongo-utils --save
 ```
 ## Usage
 
-This can be used as a Javascript module or from Command Line Interface
+This can be used as a Javascript module or as a command line tool.
 
-## Javascript module
+### Javascript module
 
 It provides 3 functions - 
 
-- downloadData - To download MongoDB Databases in json/csv/excel format.
-- uploadToDatabase - To upload Data to MongoDB instances.
-- transferData - To transfer data from one MongoDB instance to another
+- *downloadData* - To download MongoDB Databases in json/csv/excel formats.
+- *uploadToDatabase* - To upload Data(in json) to MongoDB instances.
+- *transferData* - To transfer data from one MongoDB instance to another
 
 Import necessary functions from mongo-utils as 
 
@@ -58,14 +59,14 @@ Import necessary functions from mongo-utils as
     });
  })();
 ```
-Parameters - 
+ *Parameters -* 
 
-* mongoURI - Mongo DB connection string of the instance from which you want to download data.
+* **mongoURI** - Mongo DB connection string of the instance from which you want to download data.
 
       Example - mongodb://localhost:27017
             
-* database - Name of the database to download from MongoDB instance.
-* type  - Type describes the way you want the data to get stored. This can be json or csv or excel.
+* **database** - Name of the database to download from MongoDB instance.
+* **type**  - Type describes the way you want the data to get stored. This can be "json",  "csv" or "excel".
 
 
 #### uploadToDatabase() function can be used as - 
@@ -75,14 +76,14 @@ Parameters -
   await uploadToDatabase({ dbName: <database_name>, mongoURI: <mongoDB_connection_string>, data: <data-to-upload> });
  })();
 ```
-Parameters - 
+*Parameters -* 
 
-* dbName - Name of the database to upload data to (If this doesn't already exist, new database will be created)
-* mongoURI - Mongo DB connection string of the instance to which you want to upload data TO.
+* **dbName** - Name of the database to upload data to (If this doesn't already exist, new database will be created)
+* **mongoURI** - Mongo DB connection string of the instance to which you want to upload data TO.
 
        Example - mongodb+srv://user:password@cluster0-miow4.mongodb.net/test
              
-* data - Data should be in JSON format with keys as collection names and values as array of documents to upload. Illustration given below - 
+* **data** - Data should be in JSON format with keys as collection names and values as array of documents to upload. Illustration given below - 
 
 #### Data to be uploaded should be in json format as - 
 ```
@@ -106,12 +107,12 @@ Parameters -
     });
  })();
 ```
-Parameters - 
+*Parameters -* 
 
-* transferFrom - Mongo DB connection string of the instance from which you want to transfer data FROM.
-* databaseFrom - Name of the database from which to transfer data.
-* transferTo -  Mongo DB connection string of the instance to which you want to transfer data TO.
-* databaseTo - Name of the database to transfer data to -(If this doesn't already exist, new database will be created)
+* **transferFrom**- Mongo DB connection string of the instance from which you want to transfer data FROM.
+* **databaseFrom** - Name of the database from which to transfer data.
+* **transferTo** -  Mongo DB connection string of the instance to which you want to transfer data TO.
+* **databaseTo** - Name of the database to transfer data to -(If this doesn't already exist, new database will be created)
 
 
 #### Test files 
@@ -121,18 +122,18 @@ Test files for javascript modules can be found [here](https://github.com/vasusha
 
 ## Command Line Interface 
 
-To use globally from command line, first make sure you have installed package with -g flag as - 
+To use globally from the command line,  install the package with -g flag as - 
 
 `npm install -g mongo-utils`
 
-Running `mongo-utils -h` displays all the options - 
+Run `mongo-utils -h` to display all the options and verify installation is succesful - 
 
 ```
 $ mongo-utils -h
 
 usage: index.js [-h] [-v] [-d DOWNLOAD] [-u UPLOAD] [-t TRANSFER] [-n DATABASE2] [-x MONGOURI] [-p PATH] [-y MONGOURI2] [-e {json,excel,csv}]
 
-Mongo Utils - Handy utilities for managing multiple mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils
+Mongo Utils - Handy utilities for managing mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -179,6 +180,7 @@ $ mongo-utils -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htcc
  - [Pranav Joglekar](https://github.com/Pranav2612000/)
  - [Vasu Sharma](https://github.com/vasusharma7/)
  - [Yash Shah](https://github.com/yashshah1/)
+
 
 
 

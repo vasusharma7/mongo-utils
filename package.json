@@ -40,10 +40,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yashshah1/mongo-utils.git"
+    "url": "https://github.com/vasusharma7/mongo-utils"
   },
   "bugs": {
-    "url": "https://github.com/yashshah1/mongo-utils/issues"
+    "url": "https://github.com/vasusharma7/mongo-utils"
   },
   "license": "MIT",
   "devDependencies": {
