@@ -30,11 +30,12 @@ const transferData = async (params: transferConfig): Promise<void> => {
     type: "json",
   });
   if (downloaded) {
-    uploadToDatabase({
+    await uploadToDatabase({
       dbName: databaseTo,
       mongoURI: transferTo,
       data: downloaded,
     });
   }
+  console.log("Transfered !");
 };
 export default transferData;

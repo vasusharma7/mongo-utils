@@ -67,6 +67,7 @@
     }
   },
   "dependencies": {
+    "argparse": "^2.0.1",
     "blob": "^0.1.0",
     "json-2-csv": "^3.7.7",
     "json-as-xlsx": "^1.1.5",

@@ -32,9 +32,9 @@ async function uploadToDatabase(params: uploadConfig): Promise<void> {
   });
 
   try {
-    console.log("connecting....");
+    console.log("Connecting....");
     await client.connect();
-    console.log("connected.");
+    console.log("Connected !");
     const db = client.db(dbName);
     const promises: Promise<InsertWriteOpResult<any>>[] = [];
     Object.keys(data).forEach(
@@ -53,7 +53,7 @@ async function uploadToDatabase(params: uploadConfig): Promise<void> {
     );
     await Promise.all(promises);
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     process.exit(1);
   }
   return;
