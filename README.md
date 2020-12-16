@@ -6,7 +6,7 @@
   <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/v/npm"/></a>
    <a href ="https://bundlephobia.com/result?p=mongo-utils"> <img src = "https://flat.badgen.net/bundlephobia/minzip/mongo-utils"/></a>
    <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/types/typescript"/></a>
-<a href ="https://github.com/vasusharma7/mongo-utils/tree/master/LISENCE"> <img src = "https://img.shields.io/apm/l/npm"/></a>
+<a href ="https://github.com/vasusharma7/mongo-utils/blob/master/LICENSE"> <img src = "https://img.shields.io/apm/l/npm"/></a>
  </p>
 
  
