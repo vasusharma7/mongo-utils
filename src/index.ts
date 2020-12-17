@@ -100,7 +100,7 @@ if (require.main === module) {
       }
     } else {
       console.log(
-        `Mongo Assist - A group of handy utilities for managing mongoDB instances.\nYou may expore -h flag\n For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils`,
+        `Mongo Assist - A group of handy utilities for managing mongoDB instances.\nYou may expore -h flag\nFor detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils`,
       );
     }
   })();
