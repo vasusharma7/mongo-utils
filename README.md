@@ -1,9 +1,9 @@
 <br />
 
-<h1 align="center">mongoutils</h1>
+<h1 align="center">mongo-assist</h1>
 <p align="center">
   <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/v/npm"/></a>
-   <a href ="https://bundlephobia.com/result?p=mongoutils"> <img src = "https://flat.badgen.net/bundlephobia/minzip/mongoutils"/></a>
+   <a href ="https://bundlephobia.com/result?p=mongo-assist"> <img src = "https://flat.badgen.net/bundlephobia/minzip/mongo-assist"/></a>
    <a href ="https://npmjs.org/"> <img src = "https://img.shields.io/npm/types/typescript"/></a>
 <a href ="https://github.com/vasusharma7/mongo-utils/blob/master/LICENSE"> <img src = "https://img.shields.io/apm/l/npm"/></a>
  </p>
@@ -22,13 +22,13 @@ Available as a module as well as in CLI mode,
 
 ## How to install
 
-You can install mongoutils as a dependency using NPM.
+You can install mongo-assist as a dependency using NPM.
 
 ```sh
 # Global so it can be called from anywhere
-$ npm install -g mongoutils
+$ npm install -g mongo-assist
 # or as a dependency of a project
-$ npm install mongoutils --save
+$ npm install mongo-assist --save
 ```
 
 ## Usage
@@ -43,9 +43,9 @@ It provides 3 functions -
 - _uploadToDatabase_ - To upload Data(in json) to MongoDB instances.
 - _transferData_ - To transfer data from one MongoDB instance to another
 
-Import necessary functions from mongoutils as
+Import necessary functions from mongo-assist as
 
-`import { transferData, downloadData, uploadToDatabase } from "mongoutils";`
+`import { transferData, downloadData, uploadToDatabase } from "mongo-assist";`
 
 #### downloadData() function can be used as -
 
@@ -125,12 +125,12 @@ Test files for javascript modules can be found [here](https://github.com/vasusha
 
 To use globally from the command line, install the package with -g flag as -
 
-`npm install -g mongoutils`
+`npm install -g mongo-assist`
 
-Run `mongoutils -h` to display all the options and verify installation is succesful -
+Run `mongo-assist -h` to display all the options and verify installation is succesful -
 
 ```
-$ mongoutils -h
+$ mongo-assist -h
 
 usage: index.js [-h] [-v] [-d DOWNLOAD] [-u UPLOAD] [-t TRANSFER] [-n DATABASE2] [-x MONGOURI] [-p PATH] [-y MONGOURI2] [-e {json,excel,csv}]
 
@@ -163,13 +163,13 @@ Note: Enclose MongoDB connection strings within quotes ""
 
 ```
 #download data
-$ mongoutils -d test-database -e json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+$ mongo-assist -d test-database -e json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
 
 #upload data
-$ mongoutils -u test-database -p ./test-database.json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
+$ mongo-assist -u test-database -p ./test-database.json -x "mongodb+srv://user:password@cluster0-miow4.mongodb.net/test"
 
 #transfer data
-$ mongoutils -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htccg321@cluster0-miow4.mongodb.net/test" -y "mongodb://localhost:27017"
+$ mongo-assist -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htccg321@cluster0-miow4.mongodb.net/test" -y "mongodb://localhost:27017"
 
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "mongoutils",
+  "name": "mongo-assist",
   "version": "1.0.0",
   "description": "Handy CLI utils for managing multiple mongo instances",
   "keywords": [
@@ -10,7 +10,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "mongoutils": "lib/index.js"
+    "mongo-assist": "lib/index.js"
   },
   "scripts": {
     "watch": "tsc --watch",
