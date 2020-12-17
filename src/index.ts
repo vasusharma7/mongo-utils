@@ -6,7 +6,7 @@ import downloadData from "./download/download";
 import fs = require("fs");
 import process = require("process");
 
-const version = "1.0.0";
+const version = "1.0.1";
 
 const parser: ArgumentParser = new ArgumentParser({
   description:

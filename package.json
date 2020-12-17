@@ -1,6 +1,6 @@
 {
   "name": "mongo-assist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Handy CLI utilities for managing multiple mongo instances",
   "keywords": [
     "mongodb",
