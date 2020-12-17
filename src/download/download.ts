@@ -66,11 +66,11 @@ export default async function downloadDatabase(
       }
       if (!exists) {
         console.log(`Database ${database} not found`);
-        return null;
+        process.exit();
       }
       if (isEmpty) {
         console.log(`Database ${database} is empty`);
-        return null;
+        process.exit();
       }
 
       const collectionsArray = await db.listCollections().toArray();
