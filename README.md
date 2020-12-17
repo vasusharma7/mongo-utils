@@ -13,7 +13,7 @@
     <a href="https://github.com/vasusharma7/mongo-utils/issues">Request a Feature</a>
  </center>
  
-Mongo Utils is a group of handy utilities for managing mongoDB instances. It can be used to : 
+Mongo Assist is a group of handy utilities for managing mongoDB instances. It can be used to : 
 - Download MongoDB Databases in json/csv/excel formats.
 - Upload Data in json format to MongoDB databases.
 - Transfer data from one MongoDB database to another.
@@ -134,7 +134,7 @@ $ mongo-assist -h
 
 usage: index.js [-h] [-v] [-d DOWNLOAD] [-u UPLOAD] [-t TRANSFER] [-n DATABASE2] [-x MONGOURI] [-p PATH] [-y MONGOURI2] [-e {json,excel,csv}]
 
-Mongo Utils - Handy utilities for managing mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils
+Mongo Assist - Handy utilities for managing mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils
 
 optional arguments:
   -h, --help            show this help message and exit

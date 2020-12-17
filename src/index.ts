@@ -10,7 +10,7 @@ const version = "1.0.0";
 
 const parser: ArgumentParser = new ArgumentParser({
   description:
-    "Mongo Utils - Handy utilities for managing multiple mongo instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils",
+    "Mongo Assist - A group of handy utilities for managing mongoDB instances. For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils",
   epilog: 'Note: Enclose MongoDB connection strings within quotes "" ',
 });
 
@@ -100,7 +100,7 @@ if (require.main === module) {
       }
     } else {
       console.log(
-        `Welcome to Mongo Utils - Handy utilities for managing multiple mongo instances\nYou may expore -h flag`,
+        `Mongo Assist - A group of handy utilities for managing mongoDB instances.\nYou may expore -h flag\n For detailed guide with examples - head on to https://github.com/vasusharma7/mongo-utils`,
       );
     }
   })();

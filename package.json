@@ -1,10 +1,15 @@
 {
   "name": "mongo-assist",
   "version": "1.0.0",
-  "description": "Handy CLI utils for managing multiple mongo instances",
+  "description": "Handy CLI utilities for managing multiple mongo instances",
   "keywords": [
     "mongodb",
-    "utils"
+    "utilities",
+    "database",
+    "dump",
+    "upload",
+    "download",
+    "transfer"
   ],
   "homepage": "https://github.com/vasusharma7/mongo-utils#readme",
   "main": "lib/index.js",
