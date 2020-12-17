@@ -9,7 +9,7 @@
  </p>
 
 <p align="center">
-    <a href="https://github.com/vasusharma7/mongo-utils/issues">Report a Bug</a> &nbsp &nbsp
+    <a href="https://github.com/vasusharma7/mongo-utils/issues">Report a Bug      </a>
     <a href="https://github.com/vasusharma7/mongo-utils/issues">Request a Feature</a>
  </center>
  
@@ -179,4 +179,4 @@ $ mongo-assist -t test-database -n test-database-copy -x "mongodb+srv://Vasu:htc
 
 - [Pranav Joglekar](https://github.com/Pranav2612000/)
 - [Vasu Sharma](https://github.com/vasusharma7/)
-- [-Yash Shah](https://github.com/yashshah1/)
+- [Yash Shah](https://github.com/yashshah1/)
